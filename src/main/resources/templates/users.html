@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>M3 App - Create user</title>
+</head>
+<body>
+<form method="POST" th:action="@{/users}">
+    <h2>New user</h2>
+
+    <div>
+        Username:
+        <input name="username" type="text" autofocus="true"/>
+        <br/>
+        Password:
+        <input name="password" type="password"/>
+        <br/>
+        Age:
+        <input name="age" type="number"/>
+        <br/>
+        <span th:if="${param.error}">The form has errors</span>
+        <br/>
+        <button type="submit">Create user</button>
+        <br/>
+    </div>
+</form>
+<hr>
+<table>
+    <th:block th:each="user : ${users}">
+        <tr>
+            <td th:text="${user.username}">...</td>
+            <td th:text="${user.password}">...</td>
+            <td th:text="${user.age}">...</td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>
